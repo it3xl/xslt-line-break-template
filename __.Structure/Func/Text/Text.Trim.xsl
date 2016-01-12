@@ -13,7 +13,7 @@
         
         <xsl:variable name="length" select="string-length($string)" />
         
-        <xsl:if test="$length &gt; 0">
+        <xsl:if test="0 &lt; $length">
             <xsl:choose>
                 <xsl:when test="contains($whitespaces, substring($string, $length, 1))">
                     <xsl:call-template name="Text.TrimRight">
@@ -33,7 +33,7 @@
         <xsl:param name="string" />
         <xsl:param name="whitespaces" select="$Text.Trim.Whitespaces" />
         
-        <xsl:if test="string-length($string) &gt; 0">
+        <xsl:if test="0 &lt; string-length($string)">
             <xsl:choose>
                 <xsl:when test="contains($whitespaces, substring($string, 1, 1))">
                     <xsl:call-template name="Text.TrimLeft">
