@@ -4,6 +4,6 @@
 
 ### Content
 
-*. XSL-FO LineBraker Template - [Text.LineBreak.xsl](https://github.com/it3xl/xslt-line-break-template/blob/master/__.Structure/Func/Text/Text.LineBreak.xsl)
-*. XSL-FO Line Delimiter Template - [Text.InsertDelimiters.xsl](https://github.com/it3xl/xslt-line-break-template/blob/master/__.Structure/Func/Text/Text.InsertDelimiters.xsl)
+* XSL-FO LineBraker Template - [Text.LineBreak.xsl](https://github.com/it3xl/xslt-line-break-template/blob/master/__.Structure/Func/Text/Text.LineBreak.xsl)
+* XSL-FO Line Delimiter Template - [Text.InsertDelimiters.xsl](https://github.com/it3xl/xslt-line-break-template/blob/master/__.Structure/Func/Text/Text.InsertDelimiters.xsl)
 
