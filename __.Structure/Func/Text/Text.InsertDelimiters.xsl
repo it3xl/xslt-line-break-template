@@ -29,6 +29,8 @@
         <xsl:param name="delimiter" />
         <xsl:param name="size" />
         
+        <xsl:variable name="isTrace" select="false()"/>
+        
         <xsl:choose>
             <xsl:when test="0 &lt; string-length($delimiter)">
                 <xsl:choose>

@@ -4,8 +4,6 @@
     <xsl:output indent="yes"/>
     
     <xsl:include href="../Text.xsl"/>
-    
-    <xsl:variable name="isTrace" select="true()"/>
 
     
     <xsl:template name="Test.Text.InsertBreaks.Default">

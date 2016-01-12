@@ -26,6 +26,8 @@
             Will set it recursively later. -->
         <xsl:param name="delimiter" />
         
+        <xsl:variable name="isTrace" select="false()"/>
+        
         <xsl:choose>
             <xsl:when test="0 &lt; string-length($delimiter)">
                 <xsl:choose>
