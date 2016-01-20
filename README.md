@@ -7,3 +7,12 @@
 * XSL-FO LineBraker Template - [Text.LineBreak.xsl](https://github.com/it3xl/xslt-line-break-template/blob/master/__.Structure/Func/Text/Text.LineBreak.xsl)
 * XSL-FO Line Delimiter Template - [Text.InsertDelimiters.xsl](https://github.com/it3xl/xslt-line-break-template/blob/master/__.Structure/Func/Text/Text.InsertDelimiters.xsl)
 
+### For XSL-FO it supports
+
+ - Line breaks
+ - Line delimiters (vs Line breaks)
+ - Series of delimiters in a row.
+ - Any string as a pointer to insert a break or delimiter ("\n" is default)
+ - Line delimiters' height
+ - Default Line delimiter height from a current font size.
+ - Auto ignoring of the "\r" char when searching a break place.
