@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
     
     <xsl:template name="Text.FO.InsertDelimiters">
-        <!-- it3xl.com: Расставляет блок разделителя вместо указанной строки (обычно \n - &#10;). -->
+        <!-- Puts line delimiter blocks instead of the specified string delimiter (the default delimiter is \n - &#10;). -->
         
         <xsl:param name="input" select="''" />
         <xsl:param name="delimiter" />
@@ -10,7 +10,8 @@
         
         <xsl:call-template name="Text.FO.__InsertDelimitersForTrimmed">
             <xsl:with-param name="input">
-                <!-- Обязательно сделаем trim для строки, т.к. требуем, чтоб отступы в начале и в конце задавать в разметке. -->
+                <!-- Trim for the input string is required.
+                    You have to use your own layouts for pre- and post indentations. -->
                 <xsl:call-template name="Text.Trim">
                     <xsl:with-param name="string" select="$input" />
                 </xsl:call-template>
@@ -21,7 +22,7 @@
     </xsl:template>
     
     <xsl:template name="Text.FO.__InsertDelimitersForTrimmed">
-        <!-- it3xl.com: Расставляет переносы строк перед указанным строковым указателем, если перед ним есть контент. -->
+        <!-- Do not use in your code. -->
         
         <xsl:param name="input" select="''" />
         <!-- We can't specify default value "\n" (select="'&#10;'")! It'll be ignored here.

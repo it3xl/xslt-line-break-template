@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
    
-    <!-- Trim implementation form http://stackoverflow.com/a/13974710/390940 -->
+    <!-- Trim implementation from http://stackoverflow.com/a/13974710/390940 -->
     
     <xsl:variable name="Text.Trim.Whitespaces" select="'&#09;&#10;&#13; '" />
     
