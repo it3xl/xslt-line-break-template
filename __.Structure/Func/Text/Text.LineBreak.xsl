@@ -41,9 +41,9 @@
                         <xsl:variable name="textBefore" select="substring-before($input, $pointer)" />
                         <xsl:variable name="textAfter" select="substring-after($input, concat($textBefore, $pointer))" />
                         
-                        <xsl:variable name="emptyBefore" select="0 = string-length(normalize-space($textBefore))"/>
+                        <xsl:variable name="emptyBefore" select="0 = string-length($textBefore)"/>
                         <xsl:variable name="haveBefore" select="not($emptyBefore)"/>
-                        <xsl:variable name="haveAfter" select="0 &lt; string-length(normalize-space($textAfter))"/>
+                        <xsl:variable name="haveAfter" select="0 &lt; string-length($textAfter)"/>
                         
                         <xsl:choose>
                             
