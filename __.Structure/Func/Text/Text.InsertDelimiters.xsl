@@ -45,7 +45,7 @@
                         <xsl:variable name="textAfter" select="substring-after($input, concat($textBefore, $pointer))" />
                         
                         <xsl:variable name="emptyBefore" select="0 = string-length($textBefore)"/>
-                        <xsl:variable name="haveBefore" select="0 &lt; string-length($textBefore)"/>
+                        <xsl:variable name="haveBefore" select="not($emptyBefore)"/>
                         <xsl:variable name="haveAfter" select="0 &lt; string-length($textAfter)"/>
                         
                         <xsl:if test="$haveBefore or ($haveAfter and $ignorePointerRepetition = false() )">
