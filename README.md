@@ -11,8 +11,9 @@
 
  - Line breaks
  - Line delimiters (vs Line breaks)
- - Series of delimiters in a row.
- - Any string as a pointer to insert a break or delimiter ("\n" is default)
+ - Series of pointers in a row
+ - Ignore Pointer Repetitions (disable the Series of pointers in a row)
+ - Any string as a pointer to insert a break or a delimiter ("\n" is default)
  - Line delimiters' height
  - Default Line delimiter height from a current font size.
  - Auto ignoring of the "\r" char when searching a break place.
