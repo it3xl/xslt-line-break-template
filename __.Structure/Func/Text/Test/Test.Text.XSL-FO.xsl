@@ -23,6 +23,16 @@
         </fo:block>
     </xsl:template>
     
+    <xsl:template name="Test.Text.InsertBreaks.IgnoreDuplicate">
+        <fo:block border="solid 0.3pt" margin="3pt">
+            <xsl:call-template name="Text.FO.InsertBreaks">
+                <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
+                <xsl:with-param name="ignoreDuplicate" select="true()" />
+            </xsl:call-template>
+        </fo:block>
+    </xsl:template>
+    
+    
     <xsl:template name="Test.Text.InsertDelimiters.ContextFontSize">
         <fo:block border="solid 0.3pt" margin="3pt">
             <xsl:call-template name="Text.FO.InsertDelimiters">
@@ -40,6 +50,18 @@
         </fo:block>
     </xsl:template>
     
+    <xsl:template name="Test.Text.InsertDelimiters.IgnoreDuplicate">
+        <fo:block border="solid 0.3pt" margin="3pt">
+            <xsl:call-template name="Text.FO.InsertDelimiters">
+                <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
+                <xsl:with-param name="ignoreDuplicate" select="true()" />
+            </xsl:call-template>
+        </fo:block>
+    </xsl:template>
+    
+    
+    
+    
     <xsl:template match="/">
         
         <fo:root>
@@ -52,14 +74,38 @@
             <fo:page-sequence master-reference="PageMaster1">
                 <fo:flow flow-name="xsl-region-body" font-family="serif" font-size="8pt" hyphenate="true">
                     
-                    <fo:block-container>
-                        <fo:block>
-                            <xsl:call-template name="Test.Text.InsertBreaks.Default" />
-                            <xsl:call-template name="Test.Text.InsertBreaks.LineFeed" />
-                            <xsl:call-template name="Test.Text.InsertDelimiters.ContextFontSize" />
-                            <xsl:call-template name="Test.Text.InsertDelimiters.DelimiterSize" />
-                        </fo:block>
-                    </fo:block-container>
+                    <fo:table width="400pt">
+                        <fo:table-header>
+                            <fo:table-row>
+                                <fo:table-cell>
+                                    <fo:block>Text.FO.InsertBreaks</fo:block>
+                                </fo:table-cell>
+                                <fo:table-cell>
+                                    <fo:block>Text.FO.InsertDelimiters</fo:block>
+                                </fo:table-cell>
+                            </fo:table-row>
+                        </fo:table-header>
+                        <fo:table-body>
+                            <fo:table-row>
+                                <fo:table-cell>
+                                    <fo:block margin-top="5pt">Default</fo:block>
+                                    <xsl:call-template name="Test.Text.InsertBreaks.Default" />
+                                    <fo:block margin-top="5pt">LineFeed</fo:block>
+                                    <xsl:call-template name="Test.Text.InsertBreaks.LineFeed" />
+                                    <fo:block margin-top="5pt">IgnoreDuplicate</fo:block>
+                                    <xsl:call-template name="Test.Text.InsertBreaks.IgnoreDuplicate" />
+                                </fo:table-cell>
+                                <fo:table-cell>
+                                    <fo:block margin-top="5pt">ContextFontSize</fo:block>
+                                    <xsl:call-template name="Test.Text.InsertDelimiters.ContextFontSize" />
+                                    <fo:block margin-top="5pt">DelimiterSize</fo:block>
+                                    <xsl:call-template name="Test.Text.InsertDelimiters.DelimiterSize" />
+                                    <fo:block margin-top="5pt">IgnoreDuplicate</fo:block>
+                                    <xsl:call-template name="Test.Text.InsertDelimiters.IgnoreDuplicate" />
+                                </fo:table-cell>
+                            </fo:table-row>
+                        </fo:table-body>
+                    </fo:table>
                     
                 </fo:flow>
             </fo:page-sequence>

@@ -7,6 +7,8 @@
         <xsl:param name="input" select="''" />
         <xsl:param name="delimiter" />
         <xsl:param name="size" />
+        <!-- Let's ignore repetion of input delimiters. -->
+        <xsl:param name="ignoreDuplicate" select="false()" />
         
         <xsl:call-template name="Text.FO.__InsertDelimitersForTrimmed">
             <xsl:with-param name="input">
@@ -18,6 +20,7 @@
             </xsl:with-param>
             <xsl:with-param name="delimiter" select="$delimiter" />
             <xsl:with-param name="size" select="$size" />
+            <xsl:with-param name="ignoreDuplicate" select="$ignoreDuplicate" />
         </xsl:call-template>    
     </xsl:template>
     
@@ -29,8 +32,10 @@
             Will set it recursively later. -->
         <xsl:param name="delimiter" />
         <xsl:param name="size" />
+        <!-- Let's ignore repetion of input delimiters. -->
+        <xsl:param name="ignoreDuplicate" select="false()" />
         
-        <xsl:variable name="isTrace" select="false()"/>
+        <xsl:variable name="isTrace" select="true()"/>
         
         <xsl:choose>
             <xsl:when test="0 &lt; string-length($delimiter)">
@@ -43,7 +48,7 @@
                         <xsl:variable name="haveBefore" select="0 &lt; string-length($textBefore)"/>
                         <xsl:variable name="haveAfter" select="0 &lt; string-length($textAfter)"/>
                         
-                        <xsl:if test="$haveBefore or $haveAfter">
+                        <xsl:if test="$haveBefore or ($haveAfter and $ignoreDuplicate = false() )">
                             <xsl:value-of select="$textBefore" />
                             
                             <xsl:choose>
@@ -71,6 +76,7 @@
                             <xsl:with-param name="input" select="$textAfter" />
                             <xsl:with-param name="delimiter" select="$delimiter" />
                             <xsl:with-param name="size" select="$size" />
+                            <xsl:with-param name="ignoreDuplicate" select="$ignoreDuplicate" />
                         </xsl:call-template>
                         
                     </xsl:when>
@@ -90,6 +96,7 @@
                     <xsl:with-param name="input" select="$input" />
                     <xsl:with-param name="delimiter" select="'&#10;'" />
                     <xsl:with-param name="size" select="$size" />
+                    <xsl:with-param name="ignoreDuplicate" select="$ignoreDuplicate" />
                 </xsl:call-template>
             </xsl:otherwise>
             

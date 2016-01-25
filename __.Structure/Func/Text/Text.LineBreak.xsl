@@ -6,6 +6,8 @@
         
         <xsl:param name="input" select="''" />
         <xsl:param name="delimiter" />
+        <!-- Let's ignore repetion of input delimiters. -->
+        <xsl:param name="ignoreDuplicate" select="false()" />
         
         <xsl:call-template name="Text.FO.__InsertBreaksForTrimmed">
             <xsl:with-param name="input">
@@ -16,6 +18,7 @@
                 </xsl:call-template>
             </xsl:with-param>
             <xsl:with-param name="delimiter" select="$delimiter" />
+            <xsl:with-param name="ignoreDuplicate" select="$ignoreDuplicate" />
         </xsl:call-template>    
     </xsl:template>
     
@@ -26,8 +29,10 @@
         <!-- We can't specify default value "\n" (select="'&#10;'")! It'll be ignored here.
             Will set it recursively later. -->
         <xsl:param name="delimiter" />
+        <!-- Let's ignore repetion of input delimiters. -->
+        <xsl:param name="ignoreDuplicate" select="false()" />
         
-        <xsl:variable name="isTrace" select="false()"/>
+        <xsl:variable name="isTrace" select="true()"/>
         
         <xsl:choose>
             <xsl:when test="0 &lt; string-length($delimiter)">
@@ -36,9 +41,9 @@
                         <xsl:variable name="textBefore" select="substring-before($input, $delimiter)" />
                         <xsl:variable name="textAfter" select="substring-after($input, concat($textBefore, $delimiter))" />
                         
-                        <xsl:variable name="emptyBefore" select="0 = string-length($textBefore)"/>
-                        <xsl:variable name="haveBefore" select="0 &lt; string-length($textBefore)"/>
-                        <xsl:variable name="haveAfter" select="0 &lt; string-length($textAfter)"/>
+                        <xsl:variable name="emptyBefore" select="0 = string-length(normalize-space($textBefore))"/>
+                        <xsl:variable name="haveBefore" select="not($emptyBefore)"/>
+                        <xsl:variable name="haveAfter" select="0 &lt; string-length(normalize-space($textAfter))"/>
                         
                         <xsl:choose>
                             
@@ -52,7 +57,7 @@
                                 </fo:block>
                             </xsl:when>
                             
-                            <xsl:when test="$emptyBefore and $haveAfter">
+                            <xsl:when test="$emptyBefore and $haveAfter and $ignoreDuplicate = false()">
                                 <!-- We have here the not first delimiter from a consecutive delimiters row. -->
                                 <xsl:value-of select="$textBefore" />
                                 <!-- Do not format next XML because of behaviour of the linefeed-treatment attribute. -->
@@ -64,6 +69,7 @@
                         <xsl:call-template name="Text.FO.__InsertBreaksForTrimmed">
                             <xsl:with-param name="input" select="$textAfter" />
                             <xsl:with-param name="delimiter" select="$delimiter" />
+                            <xsl:with-param name="ignoreDuplicate" select="$ignoreDuplicate" />
                         </xsl:call-template>
                         
                     </xsl:when>
@@ -82,6 +88,7 @@
                 <xsl:call-template name="Text.FO.__InsertBreaksForTrimmed">
                     <xsl:with-param name="input" select="$input" />
                     <xsl:with-param name="delimiter" select="'&#10;'" />
+                    <xsl:with-param name="ignoreDuplicate" select="$ignoreDuplicate" />
                 </xsl:call-template>
             </xsl:otherwise>
             
