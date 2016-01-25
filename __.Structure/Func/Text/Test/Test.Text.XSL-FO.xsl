@@ -18,16 +18,16 @@
         <fo:block border="solid 0.3pt" margin="3pt">
             <xsl:call-template name="Text.FO.InsertBreaks">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
-                <xsl:with-param name="delimiter" select="'&#10;'" />
+                <xsl:with-param name="pointer" select="'&#10;'" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
     
-    <xsl:template name="Test.Text.InsertBreaks.IgnoreDuplicate">
+    <xsl:template name="Test.Text.InsertBreaks.IgnorePointerRepetition">
         <fo:block border="solid 0.3pt" margin="3pt">
             <xsl:call-template name="Text.FO.InsertBreaks">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
-                <xsl:with-param name="ignoreDuplicate" select="true()" />
+                <xsl:with-param name="ignorePointerRepetition" select="true()" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
@@ -50,11 +50,11 @@
         </fo:block>
     </xsl:template>
     
-    <xsl:template name="Test.Text.InsertDelimiters.IgnoreDuplicate">
+    <xsl:template name="Test.Text.InsertDelimiters.IgnorePointerRepetition">
         <fo:block border="solid 0.3pt" margin="3pt">
             <xsl:call-template name="Text.FO.InsertDelimiters">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
-                <xsl:with-param name="ignoreDuplicate" select="true()" />
+                <xsl:with-param name="ignorePointerRepetition" select="true()" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
@@ -92,16 +92,16 @@
                                     <xsl:call-template name="Test.Text.InsertBreaks.Default" />
                                     <fo:block margin-top="5pt">LineFeed</fo:block>
                                     <xsl:call-template name="Test.Text.InsertBreaks.LineFeed" />
-                                    <fo:block margin-top="5pt">IgnoreDuplicate</fo:block>
-                                    <xsl:call-template name="Test.Text.InsertBreaks.IgnoreDuplicate" />
+                                    <fo:block margin-top="5pt">IgnorePointerRepetition</fo:block>
+                                    <xsl:call-template name="Test.Text.InsertBreaks.IgnorePointerRepetition" />
                                 </fo:table-cell>
                                 <fo:table-cell>
                                     <fo:block margin-top="5pt">ContextFontSize</fo:block>
                                     <xsl:call-template name="Test.Text.InsertDelimiters.ContextFontSize" />
                                     <fo:block margin-top="5pt">DelimiterSize</fo:block>
                                     <xsl:call-template name="Test.Text.InsertDelimiters.DelimiterSize" />
-                                    <fo:block margin-top="5pt">IgnoreDuplicate</fo:block>
-                                    <xsl:call-template name="Test.Text.InsertDelimiters.IgnoreDuplicate" />
+                                    <fo:block margin-top="5pt">IgnorePointerRepetition</fo:block>
+                                    <xsl:call-template name="Test.Text.InsertDelimiters.IgnorePointerRepetition" />
                                 </fo:table-cell>
                             </fo:table-row>
                         </fo:table-body>
