@@ -35,7 +35,7 @@
         <!-- Let's ignore repetion of pointers. -->
         <xsl:param name="ignorePointerRepetition" select="false()" />
         
-        <xsl:variable name="isTrace" select="true()"/>
+        <xsl:variable name="isTrace" select="false()"/>
         
         <xsl:choose>
             <xsl:when test="0 &lt; string-length($pointer)">
