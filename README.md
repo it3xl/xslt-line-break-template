@@ -17,3 +17,4 @@
  - Line delimiters' height
  - Default Line delimiter height from a current font size.
  - Auto ignoring of the "\r" char when searching a break place.
+ - XSLT 1.0/2.0
