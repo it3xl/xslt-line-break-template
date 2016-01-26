@@ -11,14 +11,17 @@
         <xsl:param name="ignorePointerRepetition" select="false()" />
         <xsl:param name="trace" select="false()" />
         
+        <!-- Trim for the input string is required.
+            You have to use your own layouts for pre- and post indentations. -->
+        <xsl:variable name="trimmedInput">
+            <xsl:call-template name="Text.Trim">
+                <xsl:with-param name="string" select="$input" />
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="translatedInput" select="translate($trimmedInput, '&#13;', '')" />
+        
         <xsl:call-template name="Text.FO.__InsertDelimitersForTrimmed">
-            <xsl:with-param name="input">
-                <!-- Trim for the input string is required.
-                    You have to use your own layouts for pre- and post indentations. -->
-                <xsl:call-template name="Text.Trim">
-                    <xsl:with-param name="string" select="$input" />
-                </xsl:call-template>
-            </xsl:with-param>
+            <xsl:with-param name="input" select="$translatedInput" />
             <xsl:with-param name="pointer" select="$pointer" />
             <xsl:with-param name="size" select="$size" />
             <xsl:with-param name="ignorePointerRepetition" select="$ignorePointerRepetition" />
