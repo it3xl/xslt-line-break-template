@@ -9,6 +9,7 @@
         <xsl:param name="size" />
         <!-- Let's ignore repetion of input pointers. -->
         <xsl:param name="ignorePointerRepetition" select="false()" />
+        <xsl:param name="trace" select="false()" />
         
         <xsl:call-template name="Text.FO.__InsertDelimitersForTrimmed">
             <xsl:with-param name="input">
@@ -21,6 +22,7 @@
             <xsl:with-param name="pointer" select="$pointer" />
             <xsl:with-param name="size" select="$size" />
             <xsl:with-param name="ignorePointerRepetition" select="$ignorePointerRepetition" />
+            <xsl:with-param name="trace" select="$trace" />
         </xsl:call-template>    
     </xsl:template>
     
@@ -34,8 +36,7 @@
         <xsl:param name="size" />
         <!-- Let's ignore repetion of pointers. -->
         <xsl:param name="ignorePointerRepetition" select="false()" />
-        
-        <xsl:variable name="isTrace" select="false()"/>
+        <xsl:param name="trace" select="false()" />
         
         <xsl:choose>
             <xsl:when test="0 &lt; string-length($pointer)">
@@ -57,17 +58,17 @@
                                         <xsl:attribute name="margin-top">
                                             <xsl:value-of select="$size" />
                                         </xsl:attribute>
-                                        <xsl:if test="$isTrace"><xsl:attribute name="border">0.1pt solid #F0F0F0</xsl:attribute></xsl:if>
+                                        <xsl:if test="$trace"><xsl:attribute name="border">0.1pt solid #F0F0F0</xsl:attribute></xsl:if>
                                     </fo:block>
                                 </xsl:when>
                                 <xsl:otherwise>
                                     <fo:block>
                                         <xsl:attribute name="white-space-treatment">preserve</xsl:attribute>
-                                        <xsl:if test="$isTrace"><xsl:attribute name="border">0.1pt solid #F0F0F0</xsl:attribute></xsl:if>
+                                        <xsl:if test="$trace"><xsl:attribute name="border">0.1pt solid #F0F0F0</xsl:attribute></xsl:if>
                                         <xsl:value-of select="' '"/>
                                     </fo:block>
                                     <!-- Other approach. Do not format next XML because of behaviour of the linefeed-treatment attribute. -->
-                                    <!--<fo:block linefeed-treatment="preserve"><xsl:if test="$isTrace"><xsl:attribute name="border">0.1pt solid #F0F0F0</xsl:attribute></xsl:if><xsl:value-of select="'&#10;'" /></fo:block>-->
+                                    <!--<fo:block linefeed-treatment="preserve"><xsl:if test="$trace"><xsl:attribute name="border">0.1pt solid #F0F0F0</xsl:attribute></xsl:if><xsl:value-of select="'&#10;'" /></fo:block>-->
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:if>
@@ -77,13 +78,14 @@
                             <xsl:with-param name="pointer" select="$pointer" />
                             <xsl:with-param name="size" select="$size" />
                             <xsl:with-param name="ignorePointerRepetition" select="$ignorePointerRepetition" />
+                            <xsl:with-param name="trace" select="$trace" />
                         </xsl:call-template>
                         
                     </xsl:when>
                     <xsl:otherwise>
                         <!-- We have completed. Let's interrupt recursion. -->
                         <fo:block>
-                            <xsl:if test="$isTrace"><xsl:attribute name="border">0.1pt solid #F0F0F0</xsl:attribute></xsl:if>
+                            <xsl:if test="$trace"><xsl:attribute name="border">0.1pt solid #F0F0F0</xsl:attribute></xsl:if>
                             <xsl:value-of select="$input" />
                         </fo:block>
                     </xsl:otherwise>
@@ -97,6 +99,7 @@
                     <xsl:with-param name="pointer" select="'&#10;'" />
                     <xsl:with-param name="size" select="$size" />
                     <xsl:with-param name="ignorePointerRepetition" select="$ignorePointerRepetition" />
+                    <xsl:with-param name="trace" select="$trace" />
                 </xsl:call-template>
             </xsl:otherwise>
             

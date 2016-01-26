@@ -6,10 +6,14 @@
     <xsl:include href="../Text.xsl"/>
 
     
+    <xsl:variable name="trace" select="true()" />
+
+    
     <xsl:template name="Test.Text.InsertBreaks.Default">
         <fo:block border="solid 0.3pt" margin="3pt">
             <xsl:call-template name="Text.FO.InsertBreaks">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
+                <xsl:with-param name="trace" select="$trace" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
@@ -19,6 +23,7 @@
             <xsl:call-template name="Text.FO.InsertBreaks">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
                 <xsl:with-param name="pointer" select="'&#10;'" />
+                <xsl:with-param name="trace" select="$trace" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
@@ -28,6 +33,7 @@
             <xsl:call-template name="Text.FO.InsertBreaks">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
                 <xsl:with-param name="ignorePointerRepetition" select="true()" />
+                <xsl:with-param name="trace" select="$trace" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
@@ -37,6 +43,7 @@
         <fo:block border="solid 0.3pt" margin="3pt">
             <xsl:call-template name="Text.FO.InsertDelimiters">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
+                <xsl:with-param name="trace" select="$trace" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
@@ -46,6 +53,7 @@
             <xsl:call-template name="Text.FO.InsertDelimiters">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
                 <xsl:with-param name="size" select="'4pt'" />
+                <xsl:with-param name="trace" select="$trace" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
@@ -55,6 +63,7 @@
             <xsl:call-template name="Text.FO.InsertDelimiters">
                 <xsl:with-param name="input" select="' &#10; 1 11      111&#13;&#10;&#13;&#10;2 &#10;&#10;3 &#10; 4 &#10; '" />
                 <xsl:with-param name="ignorePointerRepetition" select="true()" />
+                <xsl:with-param name="trace" select="$trace" />
             </xsl:call-template>
         </fo:block>
     </xsl:template>
