@@ -1,6 +1,14 @@
 # XSLT Line-Break Template
 
-#### Series of XSLT templates to create Line Breaks from a plain text for different layout languages.
+#### Series of XSLT templates to create Line Breaks from a plain text.
+
+Intendetn to be used with XSLT 1.0.
+For XSLT 2.0 and later consider to use approaches like
+
+* XSLT 2.0 xsl:analyze-string (RegEx)
+* XPath 2.0 tokenize + XSLT (RegEx)
+* passing sequences as a template parameter (XSLT 2.0)
+* and so on
 
 ### Content
 
@@ -17,4 +25,4 @@
  - Line delimiters' height
  - Default Line delimiter height from a current font size.
  - Auto ignoring of the "\r" char when searching a break place.
- - XSLT 1.0/2.0
+ - Added support for XSLT 2.0 for a seamless migration.
