@@ -3,6 +3,7 @@
 #### Series of XSLT templates to create Line Breaks from a plain text.
 
 Intendetn to be used with XSLT 1.0.
+
 For XSLT 2.0 and later consider to use approaches like
 
 * XSLT 2.0 xsl:analyze-string (RegEx)
