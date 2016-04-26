@@ -27,3 +27,5 @@ For XSLT 2.0 and later consider to use approaches like
  - Default Line delimiter height from a current font size.
  - Auto ignoring of the "\r" char when searching a break place.
  - Added support for XSLT 2.0 for a seamless migration.
+
+![Example of applying XSLT Line-Break Template fro XSL-FO](example.result.png?raw=true "XSL-FO example")
